@@ -1,0 +1,407 @@
+ /* Some universal settings */
+ *{
+    box-sizing:border-box;
+}
+ body{
+    margin: 0; padding: 0;
+    line-height: 1.4;
+    font-size: 22px;
+    font-family: "Whitney SSm A", "Whitney SSm B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+    
+}
+
+a{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p{
+    margin: 15px 5px 0;
+    font-size: 1.5rem;
+
+}
+
+h2, h3{
+    margin: 0;
+}
+h3{
+    padding-left: 5px;
+    margin-top: 25px;
+}
+
+nav ul li{
+    list-style-type: none;
+}
+
+ul{
+    padding: 20px;
+}
+p img{
+   float: left;
+   padding: 5px;
+}
+.deals{
+    display: flex;
+    justify-content: space-between;
+}
+
+.deal-img{
+    width: 100%;
+}
+
+
+/* The top nav bar */
+.mobile-menu{
+    padding-right: 25px;
+    cursor: pointer;
+    font-size: 1.5em;
+    text-align:right;
+    /* display:inline-block; */
+    /* float:right; */
+}
+
+.bar {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    margin: 4px 0;
+    transition: 0.4s;
+
+}
+
+.mobile-menu_close{
+    display:none;
+    font-weight: bold;
+}
+
+.top-nav{
+    z-index: 100;
+    width: 100%;
+    position: fixed;
+    top:0; left: 0;
+    background: #001e4c;
+    color:white;
+    opacity: .8;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.top-nav h2{
+    /* font-size: 1.5em; */
+    margin-top: 5px;
+    margin-bottom: 0;
+    padding-top: 0;
+    margin-left: 35px;
+    color: #ffc801;
+    font-weight: bold;
+    text-shadow: 2px 2px black;
+}
+/* Had to make a span so the display:none wouldn't conflict with display:flex */
+.top-nav h2 span{
+    display:none
+}
+
+.top-nav .right-content{
+    align-self: flex-end;
+}
+
+.top-nav ul{
+    display:none;
+}
+
+.top-nav ul{
+    margin: 0 auto;
+    padding: 0;
+    width:100%;
+    /* clear: right; */
+}
+
+
+.top-nav li{
+    font-weight:bold;
+    font-size: 1.5em;
+    list-style-type: none;
+    display: block;
+    padding: 5px 25px;
+    text-align: right;
+    color: white;
+}
+
+.top-nav li a{
+    color: #ffc801;
+    transition: all 0.9s;
+}
+.top-nav li a:hover{
+    color: white;
+}
+.current li a{
+    color: white;
+}
+
+.mobile-menu_close{
+    display:none;
+}
+
+/* top */
+
+.container{
+    margin: 55px auto 0;
+    clear:right;
+    
+}
+
+header{
+    margin-top: 40px;
+    background-color: #001e4c;
+    background-image: url('../images/climb.jpg');
+    background-attachment: fixed;
+    background-position: bottom;
+    background-size: cover;
+    
+    color: white;
+    padding: 0;
+    height: 70vh;
+}
+
+header h1{
+    color: #ffc801;
+    margin-left: 20px;
+    font-size: 3em;
+    font-weight: bold;
+    text-shadow: 2px 2px black;
+}
+
+
+header h4{
+    display:none;
+    color:  #ffc801;
+    text-shadow: 1px 1px black;
+}
+
+header .header-text{
+    font-size: 1em;
+    padding: 15px;
+    padding-right: 40px;
+    color: #ffc801;
+    text-shadow: 2px 2px black;
+    position:absolute;
+    bottom: 250px;
+}
+header .header-text p{
+    margin-bottom: 15px;
+   
+}
+
+.divided-header h1{
+    float:left;
+    width:60%;
+}
+
+.divided-header h4{
+    float:right;
+    width:30%;
+}
+.divided-header p{
+    clear:both;
+}
+
+/* form elements */
+
+textarea{
+    width: 100%;
+    height: 300px;
+    display: block;
+}
+label{
+    display: block;
+    margin-top: 15px;
+}
+input{
+    width: 100%;
+    display: block;
+    font-size: 1.5rem;
+}
+
+.send{
+    margin-top: 25px;
+    font-size: 1.0rem;
+}
+
+/* Components are elements I was using for miminalistic store. They may come in handy here too */
+
+.component{
+    z-index: 1;
+    position: relative;
+    /* width: 90%; */
+    background: #001e4c;
+    color: white;
+    margin: 15px auto;
+
+}
+
+.component img{
+    width: 100%;
+    display:block;
+    margin: 3px auto;
+    text-align: center;
+    clear: both;
+}
+.component .item{
+    width: 70%;
+    height: 70px;
+    /* border: 1px solid white; */
+    padding: 3px;
+    margin: 2px;
+    float: left;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.component .price{
+    width: 25%;
+    float: right;
+    text-align: right;
+    font-size: 1.3em;
+    padding: 5px;
+
+}
+.component .description{
+    padding: 5px;
+    padding-bottom: 10px;
+    font-size: 0.7em;
+}
+.component .description ul{
+    list-style-type: "\1f44d";
+}
+
+.component button{
+    position: absolute;
+    display:block;
+    bottom: 5px;
+    margin: 5px auto 0;
+    color: #ffc801;
+    background: #d6013b;;
+    font-weight: bold;
+    font-size: 1.3em;
+    width: 100%;
+    border: 0;
+    border-radius: 2px;
+    cursor:pointer;
+    
+}
+
+.component button:hover{
+    color: #fe0000;
+    background: #ffc801;
+    transition: all 400ms;
+}
+
+.component button:active{
+    background: #833;
+}
+
+footer {
+    
+    text-align: center;
+    font-weight: bolder;
+    font-size: 0.9em;
+    margin: 0 auto;
+    cursor: pointer;
+    color: white;
+    background-color: #001e4c;
+    background-image: url("../images/dark.jpg");
+    background-attachment: fixed;
+    background-position: bottom;
+    background-size: cover;
+    height: 80vh;
+}
+
+footer a{
+    color: whitesmoke;
+}
+
+.notice{
+    color: blue;
+}
+.error{
+    color: red;
+}
+.success{
+    color: green;
+}
+
+
+@media all and (min-width: 600px){
+    .container{
+        /* background: black; */
+        padding: 8px;
+        max-width: 1200px;
+        /* margin: 35px auto 0; */
+        clear: right;
+    }
+    header{
+        padding: 0 15px;
+    }
+
+    header h4{
+        display:block;
+    }
+
+
+    /* This is for full display of nav */
+
+    .index .top-nav ul{
+        display:flex;
+
+    }
+
+    .top-nav ul{
+
+        margin: 0 auto;
+        padding: 0;
+        width:100%;
+        display: flex;
+        justify-content: flex-end;
+
+    }
+    .top-nav li, .low-nav li{
+        font-weight:bold;
+        font-size: 1em;
+        list-style-type: none;
+        display: inline-block;
+        padding: 10px;
+    }
+
+
+    .mobile-menu{
+        display:none;
+    }
+
+    /* end full nav */
+
+    .row{
+        display:flex;
+        justify-content: space-between;
+        flex-wrap:wrap;
+    }
+
+    .component{
+        width: 48%;
+        /* margin-right: 3px; */
+        margin-bottom: 5px;
+    }
+
+    .component .price{
+        font-size: 1em;
+    
+    }
+}
+
+
+@media (min-width: 1000px){
+    .component{
+        width: 30%;
+        /* margin-right: 5px; */
+    }
+}

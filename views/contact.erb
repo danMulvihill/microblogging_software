@@ -1,0 +1,23 @@
+<div class="container sub">
+
+    <h2>Contact page</h2>
+     
+    <% if request.post? %> 
+        <div id="confirm-post">
+        <h4>Thanks, <%= @yname %>! Your message has been sent. Check your email for a response</h4>
+        
+        </div>
+     <% else %>   
+
+        <form method="POST" action="/contact">
+        <label for="message">What would you like to tell us:</label>
+        <textarea name="message"></textarea>
+        <label for="yname">Your name:</label>
+        <input name="yname" />
+        <label for="email">Your email:</label>
+        <input name="email" />
+        <input class="send" type="submit" value="Send">
+        </form>
+    <% end %>
+
+</div>

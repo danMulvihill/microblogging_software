@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bridges, Inc.</title>
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body class="index">
+    
+    <nav class="top-nav">
+        <h2><span>Bridges</span></h2>
+        <div class="right-content">
+            <div class="mobile-menu">
+                <p class="mobile-menu_open">Menu
+
+                    <!-- <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div> -->
+                </p>
+                <p class="mobile-menu_close">X</p>
+            </div>
+            <ul>
+                <li><a href="/">Home</a></li> 
+                <li><a href="/signin">Sign In</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                   
+            </ul>
+        </div>
+
+    </nav> 
+    <div class="notice">
+         <div id='container'>
+        <div class='notice'>
+            <%= flash[:notice] if flash[:notice] %>
+        </div>
+        <div class='error'>
+            <%= flash[:error] if flash[:error] %>
+        </div>
+        <div class='success'>
+            <%= flash[:success] if flash[:success] %>
+        </div>
+        
+    </div>
+    
+    <%= yield %>
+ 
+  <footer>
+        <nav class="footer-nav">
+            <ul>
+                <li><a href="#">Policies</a></li>
+                <li><a href="#">Legal stuff</a></li>
+                <li><a href="#">Work for us</a></li>
+                <li><a href="#">Contact us</a></li>
+            </ul>
+        </nav>
+        <section class="col col-3-3 js-top">&#8679;</section>
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="scripts/main.js"></script>
+
+    
+
+</body>
+
+</html>
