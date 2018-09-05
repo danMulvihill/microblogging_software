@@ -192,6 +192,10 @@ header .header-text p{
    
 }
 
+header a {
+    color: yellow;
+}
+
 .divided-header h1{
     float:left;
     width:60%;

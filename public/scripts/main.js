@@ -51,7 +51,7 @@ $(document).ready(function(){
 
     $(window).on("scroll", function(){
       $(".top-nav h2 span").fadeIn();
-      $("h1").fadeOut();
+      //$("h1").fadeOut();
       //$(".sub h1").fadeOut();
     })
 
