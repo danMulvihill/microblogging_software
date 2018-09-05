@@ -154,7 +154,6 @@ p img{
 header{
     margin-top: 40px;
     background-color: #001e4c;
-    background-image: url('../images/climb.jpg');
     background-attachment: fixed;
     background-position: bottom;
     background-size: cover;
@@ -310,7 +309,7 @@ footer {
     cursor: pointer;
     color: white;
     background-color: #001e4c;
-    background-image: url("../images/dark.jpg");
+ 
     background-attachment: fixed;
     background-position: bottom;
     background-size: cover;
