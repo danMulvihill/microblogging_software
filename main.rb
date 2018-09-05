@@ -6,7 +6,7 @@ require 'bundler/setup'
 require 'sinatra/flash' # loads sinatra flash
 
 
-set :database, "sqlite3:test_database.sqlite3"
+configure( :dvelopment){set :database, "sqlite3:test_database.sqlite3"}
 
 get "/" do 
     erb :home, layout: :layout
