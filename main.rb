@@ -1,20 +1,31 @@
 require "sinatra"
-# require "sendgrid-ruby"
 require 'sinatra/activerecord'
-require './models/user.rb'
 require 'bundler/setup' 
-require 'sinatra/flash' # loads sinatra flash
+require 'sinatra/flash' 
+require './models/user.rb'
+require './models/post.rb'
+require './models/blogger.rb'
 
+# enable :sessions
 
-configure( :dvelopment){set :database, "sqlite3:test_database.sqlite3"}
+configure( :development){set :database, "sqlite3:test_database.sqlite3"}
+
+# set :database, "sqlite3:test_database.sqlite3"
 
 get "/" do 
+    
     erb :home, layout: :layout
    
 end
 
 get "/register" do
     erb :register
+end
+
+post "/create" do
+    puts "params are "+params.inspect
+    User.create(username: params[:email], password: params[:password])
+    redirect '/signin'
 end
 
 get "/signin" do
@@ -28,10 +39,13 @@ post "/signin" do
     puts @user
 
     if @user.password == params[:password]
-        redirect '/'
+        flash[:success] = "Logged In"
+        redirect '/blog'
     else
         "<h2 class=\"error\">Log-in failed</h2>"
+        # flash[:error] = "Failed to log in"
         # redirect '/login-failed'
+
     end
 end
 
@@ -43,10 +57,11 @@ end
 
 post "/blog" do
     puts "params are "+params.inspect
-    @yname = params[:yname]
+    # puts "USER ID =========="+user.id
+    @user = params[:user]
     @message = params[:message]
-    # @email = params[:email]
-
+     @email = params[:email]
+    Post.create(content: params[:message])
     erb :blog, layout: :layout
 end
 

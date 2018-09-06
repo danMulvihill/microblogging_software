@@ -4,17 +4,28 @@
      
     <% if request.post? %> 
         <div id="confirm-post">
-        <h4>Thanks, <%= @yname %>! Your message has been sent. Check your email for a response</h4>
+        <h4>Posted by <%= params[:username] %>:</h4>
+        <p><%= @message %>
         
         </div>
      <% else %>   
 
-        <form method="POST" action="/contact">
+        <form method="POST" action="/blog">
         <label for="message">What would you like to say:</label>
         <textarea name="message"></textarea>
 
         <input class="send" type="submit" value="Send">
         </form>
     <% end %>
+
+     <% Post.all.reverse.each do |post| %> 
+
+    
+    
+    <h3><%= "Post: #{post.content}" %></h3>
+     
+
+
+     <% end %> 
 
 </div>
