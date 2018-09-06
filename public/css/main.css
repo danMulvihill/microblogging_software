@@ -334,6 +334,9 @@ footer a{
     color: green;
 }
 
+.js-top{
+    font-size: 3rem;
+}
 
 @media all and (min-width: 600px){
     .container{

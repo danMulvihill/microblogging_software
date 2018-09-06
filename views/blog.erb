@@ -1,14 +1,14 @@
 <div class="container sub">
 
-    <h2>Go ahead...</h2>
+    <h2>Go ahead <%= params[:username] %>...</h2>
      
     <% if request.post? %> 
         <div id="confirm-post">
-        <h4>Posted by <%= params[:username] %>:</h4>
+        <p>Your post:</p>
         <p><%= @message %>
         
         </div>
-     <% else %>   
+     <% end %>
 
         <form method="POST" action="/blog">
         <label for="message">What would you like to say:</label>
@@ -16,16 +16,16 @@
 
         <input class="send" type="submit" value="Send">
         </form>
-    <% end %>
+    
 
      <% Post.all.reverse.each do |post| %> 
 
     
     
     <h3><%= "Post: #{post.content}" %></h3>
-     
+     <p><%= "from: #{post.user_id}" %></p>
 
 
      <% end %> 
-
+<section class="col col-3-3 js-top">&#8679;</section>
 </div>
