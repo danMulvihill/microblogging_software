@@ -233,12 +233,14 @@ input{
 /* input buttons */
 .send{
     font-size: 1.5rem;
+    cursor: pointer;
     border: none;
     border-radius: 5px;
     padding: 3px;
     margin: 15px auto;
     width: 80%;
     background:yellow;
+    transition: all 0.7s;
 }
 .send:hover{
     color: white;
