@@ -14,17 +14,19 @@
         <label for="message">What would you like to say:</label>
         <textarea name="message"></textarea>
 
-        <input class="send" type="submit" value="Send">
+        <input class="send" type="submit" value="Submit post">
         </form>
     
 
      <% Post.all.reverse.each do |post| %> 
 
     
-    
-    <h3><%= "Post: #{post.content}" %></h3>
-     <p><%= "from: #{post.user_id}" %></p>
-
+        <div class="post-content">
+        <h3><%= "#{post.content}" %></h3>
+        <p>
+         <%= "posted by: #{User.find(post.user_id).username} on #{post.date_posted}" %>
+        </p>
+        </div>
 
      <% end %> 
 <section class="col col-3-3 js-top">&#8679;</section>

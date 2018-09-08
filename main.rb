@@ -6,7 +6,17 @@ require './models/user.rb'
 require './models/post.rb'
 require './models/blogger.rb'
 
-# enable :sessions
+ enable :sessions
+
+def current_user
+    if session[:user_id]
+        User.find(session[:user_id])
+    end
+end
+
+def sign_out
+    session[:user_id] = nil
+end
 
 configure( :development){set :database, "sqlite3:test_database.sqlite3"}
 
@@ -24,7 +34,7 @@ end
 
 post "/create" do
     puts "params are "+params.inspect
-    User.create(username: params[:email], password: params[:password])
+    User.create(fname: params[:fname], lname: params[:lname], username: params[:email], password: params[:password])
     redirect '/signin'
 end
 
@@ -39,6 +49,7 @@ post "/signin" do
     puts @user
 
     if @user.password == params[:password]
+        session[:user_id] = @user.id
         flash[:success] = "Logged In"
         redirect '/blog'
     else
@@ -60,8 +71,9 @@ post "/blog" do
     # puts "USER ID =========="+user.id
     @user = params[:user]
     @message = params[:message]
-     @email = params[:email]
-    Post.create(content: params[:message])
+    @email = params[:email]
+    user = current_user
+    Post.create(content: params[:message], user_id: user.id)
     erb :blog, layout: :layout
 end
 
