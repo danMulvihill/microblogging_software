@@ -23,9 +23,7 @@ configure( :development){set :database, "sqlite3:test_database.sqlite3"}
 # set :database, "sqlite3:test_database.sqlite3"
 
 get "/" do 
-    
-    erb :home, layout: :layout
-   
+    erb :home
 end
 
 get "/register" do
@@ -33,9 +31,16 @@ get "/register" do
 end
 
 post "/create" do
-    puts "params are "+params.inspect
-    User.create(fname: params[:fname], lname: params[:lname], username: params[:email], password: params[:password])
-    redirect '/signin'
+    puts "PARAMS are "+params.inspect
+    
+    if params[:fname]!="" && params[:lname] !="" && params[:email] !="" && params[:password] !=""
+        puts "params are "+params.inspect
+        User.create(fname: params[:fname], lname: params[:lname], username: params[:email], password: params[:password])
+        redirect '/signin'
+    else 
+        flash[:error] = "All fields are required"
+        redirect '/register'
+    end
 end
 
 get "/signin" do
@@ -43,38 +48,54 @@ get "/signin" do
  end   
     
 post "/signin" do
-    puts "params are "+params.inspect
+    
     
     @user = User.where(username: params[:username]).first
     puts @user
 
-    if @user.password == params[:password]
-        session[:user_id] = @user.id
-        flash[:success] = "Logged In"
-        redirect '/blog'
+    if current_user
+        flash[:notice] = 'Signed Out'
+        session[:user_id] = nil
+        redirect '/signin'
     else
-        "<h2 class=\"error\">Log-in failed</h2>"
-        # flash[:error] = "Failed to log in"
-        # redirect '/login-failed'
 
+        if params[:username] != "" && params[:password] != "" && (@user.password == params[:password])
+            session[:user_id] = @user.id
+            flash[:success] = "#{@user.fname} logged In"
+            redirect '/blog'
+        else
+            # "<h2 class=\"error\">Log-in failed</h2>"
+            flash[:error] = "Failed to log in"
+            redirect '/signin'
+
+        end
     end
 end
 
+
+
 get "/blog" do
-    erb :blog, layout: :layout
+    erb :blog
 end
 
 
 
 post "/blog" do
+    erb :blog
     puts "params are "+params.inspect
     # puts "USER ID =========="+user.id
     @user = params[:user]
     @message = params[:message]
     @email = params[:email]
     user = current_user
-    Post.create(content: params[:message], user_id: user.id)
-    erb :blog, layout: :layout
+    if @message != ""
+        Post.create(content: params[:message], user_id: user.id)
+        redirect '/blog'
+    else
+        flash[:notice] = "You can't say nothing!"
+        redirect '/blog'
+    end
+    
 end
 
 

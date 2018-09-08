@@ -1,22 +1,20 @@
 <div class="container sub">
 
-    <h2>Go ahead <%= params[:username] %>...</h2>
-     
-    <% if request.post? %> 
-        <div id="confirm-post">
-        <p>Your post:</p>
-        <p><%= @message %>
-        
-        </div>
-     <% end %>
 
+     
+    <%  if !current_user %>  
+        <h3><a href="/register">Sign up</a> or <a href="/signin">log in</a> to participate</h3>
+        
+    <% else %>  
+        <h2>Go ahead <%= params[:username] %>...</h2>
         <form method="POST" action="/blog">
         <label for="message">What would you like to say:</label>
-        <textarea name="message"></textarea>
+        <textarea name="message" id="message"></textarea>
 
         <input class="send" type="submit" value="Submit post">
         </form>
-    
+   
+    <% end %>
 
      <% Post.all.reverse.each do |post| %> 
 
@@ -24,7 +22,7 @@
         <div class="post-content">
         <h3><%= "#{post.content}" %></h3>
         <p>
-         <%= "posted by: #{User.find(post.user_id).username} on #{post.date_posted}" %>
+         <%= "posted by: #{User.find(post.user_id).fname} #{User.find(post.user_id).lname}on #{post.date_posted}" %>
         </p>
         </div>
 

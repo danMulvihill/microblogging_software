@@ -218,16 +218,31 @@ textarea{
 label{
     display: block;
     margin-top: 15px;
+    width: 90%;
+    margin: 0 25%;
+    
 }
 input{
     width: 90%;
+    margin: 0 auto;
     display: block;
     font-size: 1.5rem;
+    
 }
 
+/* input buttons */
 .send{
-    margin-top: 25px;
-    font-size: 1.0rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 15px auto;
+    width: 80%;
+    background:yellow;
+}
+.send:hover{
+    color: white;
+    background: black;
 }
 
 .post-content{
@@ -245,78 +260,6 @@ input{
     color: white;
 }
 
-/* Components are elements I was using for miminalistic store. They may come in handy here too */
-
-.component{
-    z-index: 1;
-    position: relative;
-    /* width: 90%; */
-    background: #001e4c;
-    color: white;
-    margin: 15px auto;
-
-}
-
-.component img{
-    width: 100%;
-    display:block;
-    margin: 3px auto;
-    text-align: center;
-    clear: both;
-}
-.component .item{
-    width: 70%;
-    height: 70px;
-    /* border: 1px solid white; */
-    padding: 3px;
-    margin: 2px;
-    float: left;
-    padding: 5px;
-    font-weight: bold;
-}
-
-.component .price{
-    width: 25%;
-    float: right;
-    text-align: right;
-    font-size: 1.3em;
-    padding: 5px;
-
-}
-.component .description{
-    padding: 5px;
-    padding-bottom: 10px;
-    font-size: 0.7em;
-}
-.component .description ul{
-    list-style-type: "\1f44d";
-}
-
-.component button{
-    position: absolute;
-    display:block;
-    bottom: 5px;
-    margin: 5px auto 0;
-    color: #ffc801;
-    background: #d6013b;;
-    font-weight: bold;
-    font-size: 1.3em;
-    width: 100%;
-    border: 0;
-    border-radius: 2px;
-    cursor:pointer;
-    
-}
-
-.component button:hover{
-    color: #fe0000;
-    background: #ffc801;
-    transition: all 400ms;
-}
-
-.component button:active{
-    background: #833;
-}
 
 footer {
     
@@ -338,15 +281,25 @@ footer a{
     color: whitesmoke;
 }
 
-.notice{
-    color: blue;
+.flash {
+    margin-top: 60px;
+    color: white;
+    text-align: center;
 }
-.error{
-    color: red;
+
+.success {
+    background-color: blue;
 }
-.success{
-    color: green;
+
+.error {
+    background-color: red;
 }
+
+.notice {
+    background-color:green;
+}
+
+
 
 .js-top{
     font-size: 3rem;

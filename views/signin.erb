@@ -1,6 +1,6 @@
 <div class="container sub">
 
-
+<% if !current_user %>
 
     <h2>Member Sign In </h2>
      
@@ -8,9 +8,18 @@
             <label for="username">Username (or email):</label>
             <input id="username" name="username" />
             <label for="password">Password:</label>
-            <input id="password" name="password" />
+            <input type="password" id="password" name="password" />
             <input class="send" type="submit" value="Start microblogging">
         </form>
-  
+<% else %>  
+
+    <p>logged in</p>
+    <form method="POST" action="/signin">
+        <input class="send" type="submit" value="Sign out?">
+    </form>
+
+
+
+<% end %>
 
 </div>
