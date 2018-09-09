@@ -6,7 +6,7 @@
     margin: 0; padding: 0;
     line-height: 1.4;
     font-size: 22px;
-    font-family: "Whitney SSm A", "Whitney SSm B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+    font-family: "Helvetica Neue", "Roboto", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
     
 }
 
@@ -210,6 +210,12 @@ header a {
 }
 
 /* form elements */
+
+form{
+    width: 70%;
+    margin: 10px auto;
+}
+
 textarea{
     width: 100%;
     height: 100px;
@@ -219,12 +225,11 @@ label{
     display: block;
     margin-top: 15px;
     width: 90%;
-    margin: 0 25%;
     
 }
 input{
     width: 90%;
-    margin: 0 auto;
+    
     display: block;
     font-size: 1.5rem;
     
@@ -234,7 +239,6 @@ input{
 .send{
     font-size: 1.5rem;
     cursor: pointer;
-    border: none;
     border-radius: 5px;
     padding: 3px;
     margin: 15px auto;
@@ -324,8 +328,11 @@ footer a{
     }
 
     input{
-        width: 50%;
+        width: 90%;
     }
+
+   
+
     /* This is for full display of nav */
 
     .index .top-nav ul{
@@ -363,16 +370,8 @@ footer a{
         flex-wrap:wrap;
     }
 
-    .component{
-        width: 48%;
-        /* margin-right: 3px; */
-        margin-bottom: 5px;
-    }
+   
 
-    .component .price{
-        font-size: 1em;
-    
-    }
 }
 
 
@@ -381,4 +380,6 @@ footer a{
         width: 30%;
         /* margin-right: 5px; */
     }
+
+
 }
