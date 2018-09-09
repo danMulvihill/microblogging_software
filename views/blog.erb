@@ -25,6 +25,8 @@
             <span>
                 <%= "posted by: #{@user.fname} #{@user.lname} on #{post.date_posted}" %>
             </span>
+            <% if session[:user_id] == post.user_id %>
+
             <span>
                 <form class="inner-form" method="POST" action="/edit"><input class="send edit" type="submit" value="edit"></form>
                 <form class="inner-form" method="POST" action="/delete"> 
@@ -33,6 +35,8 @@
                     <input class="send del" type="submit" value="X">
                 </form>
             </span>
+            <% end %>
+
         </div>
       </div>
 
