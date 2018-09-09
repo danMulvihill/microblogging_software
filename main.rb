@@ -49,12 +49,11 @@ get "/signin" do
     
 post "/signin" do
     
-    
     @user = User.where(username: params[:username]).first
     puts @user
 
     if current_user
-        flash[:notice] = 'Signed Out'
+        flash[:notice] = 'Logged Out'
         session[:user_id] = nil
         redirect '/signin'
     else
@@ -96,6 +95,27 @@ post "/blog" do
         redirect '/blog'
     end
     
+end
+
+post "/delete" do
+    puts session[:user_id]
+    puts params[:uid]
+    puts "params="+params.inspect
+    puts params[:pid].to_i
+    if session[:user_id].to_i == params[:uid].to_i
+        @postfind = Post.find(params[:pid].to_i)
+        puts @postfind
+        @postfind.delete
+        flash[:notice] = "Record Deleted"
+        redirect '/blog'
+    else
+        flash[:error] = "You can't delete someone's post"
+        redirect '/blog'
+
+    end
+
+
+
 end
 
 

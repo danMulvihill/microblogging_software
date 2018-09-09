@@ -18,13 +18,23 @@
 
      <% Post.all.reverse.each do |post| %> 
 
-    
-        <div class="post-content">
-        <h3><%= "#{post.content}" %></h3>
-        <p>
-         <%= "posted by: #{User.find(post.user_id).fname} #{User.find(post.user_id).lname} on #{post.date_posted}" %>
-        </p>
+      <% @user = User.find(post.user_id) %>
+      <div class="post-content">
+        <h3><%= "#{post.id} #{post.content}" %></h3>
+        <div>
+            <span>
+                <%= "posted by: #{@user.fname} #{@user.lname} on #{post.date_posted}" %>
+            </span>
+            <span>
+                <form class="inner-form" method="POST" action="/edit"><input class="send edit" type="submit" value="edit"></form>
+                <form class="inner-form" method="POST" action="/delete"> 
+                    <input type="hidden" name="pid" value='<%= "#{post.id}" %>'>
+                    <input type="hidden" name="uid" value='<%= "#{post.user_id}" %>'>
+                    <input class="send del" type="submit" value="X">
+                </form>
+            </span>
         </div>
+      </div>
 
      <% end %> 
 <section class="col col-3-3 js-top">&#8679;</section>

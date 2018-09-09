@@ -251,20 +251,45 @@ input{
     background: black;
 }
 
+.edit{
+    border:none;
+    font-size: 1rem;
+    width: 50px;
+    margin: 0;
+    background: green;
+    color: white;
+    display:inline;
+}
+.del{
+    border:none;
+    font-size: 1rem;
+    margin: 0;
+    margin-right: 4px;
+    width:20px;
+    background: red;
+    color: white;
+    display:inline;
+}
+
 .post-content{
     border: 1px solid #001e4c;
     border-radius: 10px;
     margin-top: 25px;
     
 }
-.post-content p{
+.post-content div{
     background-color: burlywood;
     padding-left: 15px;
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    justify-content: space-between;
 }
-.post-content p span{
-    margin-left:30px;
-    color: white;
+
+.inner-form{
+    display:inline;
+
 }
+
 
 
 footer {
