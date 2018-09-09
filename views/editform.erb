@@ -1,0 +1,7 @@
+        <h2>Make your changes, <%= params[:username] %>...</h2>
+        <form method="POST" action="/blog">
+        
+        <textarea name="message" id="message" value=" <%= params[:content]%> "></textarea>
+
+        <input class="send" type="submit" value="Submit post">
+        </form>

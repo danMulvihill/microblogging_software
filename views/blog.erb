@@ -28,7 +28,11 @@
             <% if session[:user_id] == post.user_id %>
 
             <span>
-                <form class="inner-form" method="POST" action="/edit"><input class="send edit" type="submit" value="edit"></form>
+                <form class="inner-form" method="POST" action="/edit">
+                    <input type="hidden" name="pid" value='<%= "#{post.id}" %>'>
+                    <input type="hidden" name="uid" value='<%= "#{post.user_id}" %>'>
+                    <input class="send edit" type="submit" value="edit">
+                </form>
                 <form class="inner-form" method="POST" action="/delete"> 
                     <input type="hidden" name="pid" value='<%= "#{post.id}" %>'>
                     <input type="hidden" name="uid" value='<%= "#{post.user_id}" %>'>

@@ -49,14 +49,19 @@ get "/signin" do
     
 post "/signin" do
     
-    @user = User.where(username: params[:username]).first
-    puts @user
+
 
     if current_user
-        flash[:notice] = 'Logged Out'
+        flash[:error] = 'Logged Out'
         session[:user_id] = nil
         redirect '/signin'
     else
+        @user = User.where(username: params[:username]).first
+        # puts @user
+        if !@user
+            flash[:notice] = "Username not found"
+            redirect '/signin'
+        end
 
         if params[:username] != "" && params[:password] != "" && (@user.password == params[:password])
             session[:user_id] = @user.id
@@ -85,9 +90,10 @@ post "/blog" do
     # puts "USER ID =========="+user.id
     @user = params[:user]
     @message = params[:message]
-    @email = params[:email]
     user = current_user
-    if @message != ""
+    puts current_user
+    puts user
+    if @message != "".strip!
         Post.create(content: params[:message], user_id: user.id)
         redirect '/blog'
     else
@@ -111,11 +117,22 @@ post "/delete" do
     else
         flash[:error] = "You can't delete someone's post"
         redirect '/blog'
-
     end
-
-
-
 end
 
+post "/edit" do
+    puts session[:user_id]
+    puts params[:uid]
+    puts "params="+params.inspect
+    puts params[:pid].to_i
 
+        @postfind = Post.find(params[:pid].to_i)
+        puts @postfind
+        @postfind.update(content: "update me")
+        flash[:notice] = "Edit"
+        redirect '/editform'
+end
+
+get "/editform" do
+    erb :editform 
+end
