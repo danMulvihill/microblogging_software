@@ -96,8 +96,8 @@ end
 
 post "/delete" do
     if session[:user_id].to_i == params[:uid].to_i
-        @postfind = Post.find(params[:pid].to_i)
-        @postfind.delete
+        @post = Post.find(params[:pid].to_i)
+        @post.delete
         flash[:success] = "Post Deleted"
         redirect '/blog'
     else
@@ -107,15 +107,10 @@ post "/delete" do
 end
 
 post "/edit" do
-    puts session[:user_id]
-    puts params[:uid]
-    puts "params="+params.inspect
-    puts params[:pid].to_i
     editid = params[:pid].to_i
-    @postfind = Post.find(editid)
-
+    @post = Post.find(editid)
     flash[:notice] = "Edit Mode"
-    redirect '/editform?content='+@postfind.content+"&editid="+editid.to_s
+    redirect '/editform?content='+@post.content+"&editid="+editid.to_s
 end
 
 get "/editform" do
