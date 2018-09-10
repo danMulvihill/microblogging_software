@@ -1,7 +1,7 @@
-        <h2>Make your changes, <%= params[:username] %>...</h2>
-        <form method="POST" action="/blog">
+        <h2>Make your changes:</h2>
+        <form method="POST" action="/editform">
         
-        <textarea name="message" id="message" value=" <%= params[:content]%> "></textarea>
-
+        <textarea name="message" id="message"><%= params[:content] %></textarea>
+        <input type="hidden" name="eid" value='<%= "#{params[:editid]}" %> '>
         <input class="send" type="submit" value="Submit post">
         </form>

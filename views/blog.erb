@@ -20,7 +20,7 @@
 
       <% @user = User.find(post.user_id) %>
       <div class="post-content">
-        <h3><%= "#{post.id} #{post.content}" %></h3>
+        <h3><%= "#{post.content}" %></h3>
         <div>
             <span>
                 <%= "posted by: #{@user.fname} #{@user.lname} on #{post.date_posted}" %>

@@ -220,6 +220,8 @@ textarea{
     width: 100%;
     height: 100px;
     display: block;
+    font-size: 1.3rem;
+    border:inset;
 }
 label{
     display: block;
@@ -319,7 +321,7 @@ footer a{
 }
 
 .success {
-    background-color: blue;
+    background-color: maroon;
 }
 
 .error {
@@ -401,9 +403,8 @@ footer a{
 
 
 @media (min-width: 1000px){
-    .component{
-        width: 30%;
-        /* margin-right: 5px; */
+    form{
+        width: 100%;
     }
 
 

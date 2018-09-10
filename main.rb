@@ -31,8 +31,6 @@ get "/register" do
 end
 
 post "/create" do
-    puts "PARAMS are "+params.inspect
-    
     if params[:fname]!="" && params[:lname] !="" && params[:email] !="" && params[:password] !=""
         puts "params are "+params.inspect
         User.create(fname: params[:fname], lname: params[:lname], username: params[:email], password: params[:password])
@@ -49,26 +47,23 @@ get "/signin" do
     
 post "/signin" do
     
-
-
     if current_user
-        flash[:error] = 'Logged Out'
+        flash[:success] = 'Logged Out'
         session[:user_id] = nil
         redirect '/signin'
     else
         @user = User.where(username: params[:username]).first
         # puts @user
         if !@user
-            flash[:notice] = "Username not found"
+            flash[:error] = "Username not found"
             redirect '/signin'
         end
 
         if params[:username] != "" && params[:password] != "" && (@user.password == params[:password])
             session[:user_id] = @user.id
-            flash[:success] = "#{@user.fname} logged In"
+            flash[:notice] = "#{@user.fname} logged In"
             redirect '/blog'
         else
-            # "<h2 class=\"error\">Log-in failed</h2>"
             flash[:error] = "Failed to log in"
             redirect '/signin'
 
@@ -85,34 +80,25 @@ end
 
 
 post "/blog" do
-    erb :blog
     puts "params are "+params.inspect
-    # puts "USER ID =========="+user.id
     @user = params[:user]
-    @message = params[:message]
+    @message = params[:message].strip!
     user = current_user
-    puts current_user
-    puts user
-    if @message != "".strip!
-        Post.create(content: params[:message], user_id: user.id)
+    if @message != "" 
+        Post.create(content: params[:message], user_id: current_user.id)
         redirect '/blog'
     else
-        flash[:notice] = "You can't say nothing!"
+        flash[:error] = "You can't say nothing!"
         redirect '/blog'
     end
     
 end
 
 post "/delete" do
-    puts session[:user_id]
-    puts params[:uid]
-    puts "params="+params.inspect
-    puts params[:pid].to_i
     if session[:user_id].to_i == params[:uid].to_i
         @postfind = Post.find(params[:pid].to_i)
-        puts @postfind
         @postfind.delete
-        flash[:notice] = "Record Deleted"
+        flash[:success] = "Post Deleted"
         redirect '/blog'
     else
         flash[:error] = "You can't delete someone's post"
@@ -125,14 +111,22 @@ post "/edit" do
     puts params[:uid]
     puts "params="+params.inspect
     puts params[:pid].to_i
+    editid = params[:pid].to_i
+    @postfind = Post.find(editid)
 
-        @postfind = Post.find(params[:pid].to_i)
-        puts @postfind
-        @postfind.update(content: "update me")
-        flash[:notice] = "Edit"
-        redirect '/editform'
+    flash[:notice] = "Edit Mode"
+    redirect '/editform?content='+@postfind.content+"&editid="+editid.to_s
 end
 
 get "/editform" do
+    puts "params: "+params.inspect
+    flash[:success] = "Post edited"
     erb :editform 
+end
+
+post "/editform" do
+    puts "params for post: "+params.inspect
+    @postfind = Post.find(params[:eid].to_i)
+    @postfind.update(content: params[:message])
+    redirect '/blog'
 end
