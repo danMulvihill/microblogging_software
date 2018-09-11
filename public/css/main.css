@@ -212,8 +212,10 @@ header a {
 /* form elements */
 
 form{
+    padding: 10px;
     width: 70%;
     margin: 10px auto;
+    background: burlywood;
 }
 
 textarea{
@@ -225,13 +227,14 @@ textarea{
 }
 label{
     display: block;
-    margin-top: 15px;
+    margin: 15px auto 0;
     width: 90%;
     
 }
 input{
     width: 90%;
-    
+    margin-left: auto;
+    margin-right: auto;
     display: block;
     font-size: 1.5rem;
     
@@ -289,6 +292,7 @@ input{
 
 .inner-form{
     display:inline;
+    padding: 0;
 
 }
 
