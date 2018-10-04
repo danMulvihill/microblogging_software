@@ -26,15 +26,15 @@ get "/" do
     erb :home
 end
 
-get '/delete_account' do\
+get "/delete_account" do
     erb :delete_account
 end
 
-post '/delete-account' do
+post "/delete-account" do
     user = current_user
         sign_out
         User.delete(current_user)
-        flash[:error] = "Your Account Is Gone Forever"
+        flash[:error] = "Your Account Is Gone Forever ;("
         redirect '/'
     end
 
